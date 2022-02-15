@@ -1,5 +1,7 @@
 package br.com.fiap.revisao.model;
 
+import java.util.List;
+
 public class Usuario {
 
 	//Modificadores de acesso:
@@ -15,6 +17,9 @@ public class Usuario {
 	private String cpf;
 	protected int idade;
 	
+	//Define a lista de atividades realizadas pelo usuário
+	private List<Atividade> atividades;
+	
 	//Construtores -> Método especial utilizado na instanciação da classe
 	//1- não tem retorno, nem void
 	//2- tem o mesmo nome da classe
@@ -24,13 +29,18 @@ public class Usuario {
 	}
 	
 	public Usuario(long id, String nome, String cpf, int idade) {
-		this(id, nome); //chamar o construtor da linha 20
+		this(id, nome); //chamar o construtor da linha 26
 		this.cpf = cpf;
 		this.idade = idade;
 	}
 	
-	//Métodos
+	//Criar um construtor com todos os atributos
+	public Usuario(long id, String nome, String cpf, int idade, List<Atividade> atividades) {
+		this(id, nome, cpf, idade);
+		this.atividades = atividades;
+	}
 	
+	//Métodos
 	//Sobrescrenvendo o método toString() para exibir os dados do objeto
 	@Override
 	public String toString() {
@@ -85,6 +95,14 @@ public class Usuario {
 
 	public void setIdade(int idade) {
 		this.idade = idade;
+	}
+
+	public List<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 	
 }
