@@ -28,7 +28,9 @@ public abstract class Conta {
 	//Métodos
 	public abstract void retirar(double valor) throws SaldoInsuficienteException;
 
-	public abstract void depositar(double valor);
+	public void depositar(double valor) {
+		saldo += valor;
+	}
 	
 	//Getters e Setters
 	public int getAgencia() {

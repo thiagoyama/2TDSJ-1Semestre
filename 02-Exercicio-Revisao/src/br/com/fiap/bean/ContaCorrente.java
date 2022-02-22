@@ -30,10 +30,10 @@ public class ContaCorrente extends Conta {
 		saldo -= valor;
 	}
 
-	@Override
-	public void depositar(double valor) {
-		saldo += valor; //saldo = saldo + valor;
-	}
+//	@Override CTRL + /
+//	public void depositar(double valor) {
+//		saldo += valor; //saldo = saldo + valor;
+//	}
 
 	//Getters e Setters
 	public TipoConta getTipo() {
