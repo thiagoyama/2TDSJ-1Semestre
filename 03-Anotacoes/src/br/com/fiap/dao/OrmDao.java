@@ -1,5 +1,7 @@
 package br.com.fiap.dao;
 
+import br.com.fiap.anotacao.Tabela;
+
 public class OrmDao {
 	
 	//1- Criar a anotação @Tabela com o parâmetro nome
@@ -14,7 +16,10 @@ public class OrmDao {
 	 * @return o select na tabela configurada na anotação @Tabela
 	 */
 	public String pesquisar(Object objeto) {
-		
+		//Recuperar o @Tabela do objeto
+		Tabela anotacao =  objeto.getClass().getAnnotation(Tabela.class);
+		//Concatenar o comando SQL com o parâmetro nome da @Tabela
+		return "SELECT * FROM " + anotacao.nome();
 	}
 	
 }

@@ -1,0 +1,32 @@
+Tabela no banco:
+
+TB_PRODUTO
+----
+cd_produto number(10,0) (PK) not null
+nm_produto varchar2(60) not null
+qt_produto number(10,0) 
+vl_produto number(10,2)
+dt_cadastro date not null
+st_disponivel number(1,0) not null
+dt_validade date
+fl_foto blob
+ds_tipo varchar(20)
+
+Sequence: SQ_TB_PRODUTO
+
+Exercício
+
+TB_CLIENTE
+-----
+cd_cliente number(10,0) (PK) not null
+nm_cliente varchar(80) not null
+dt_nascimento date
+dt_cadastro date not null
+ds_genero varchar(20) not null, Enum no Java
+fl_foto blob
+nr_cpf varchar(15) not null
+nr_telefone varchar(12) 
+
+Atributo Integer idade, que não será uma coluna na tabela, só existe no Java
+
+Sequence: SQ_TB_CLIENTE

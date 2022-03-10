@@ -2,7 +2,9 @@ package br.com.fiap.model;
 
 import java.time.LocalDate;
 import br.com.fiap.anotacao.Coluna;
+import br.com.fiap.anotacao.Tabela;
 
+@Tabela(nome="TB_PESSOA")
 public class Pessoa {
 
 	@Coluna(chave = true, nome="cd_pessoa")
@@ -11,7 +13,7 @@ public class Pessoa {
 	@Coluna(nome="nm_pessoa", tamanho = 80)
 	private String nome;
 	
-	@Coluna(nome="dt_nascimento")
+	@Coluna(nome="dt_nascimento") 
 	private LocalDate dataNascimento;
 
 	public int getCodigo() {
