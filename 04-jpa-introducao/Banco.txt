@@ -35,3 +35,26 @@ Sequence: SQ_TB_CLIENTE
 Host: oracle.fiap.com.br
 Port: 1521
 SID: ORCL
+
+
+Cadastrar - persist(), merge()
+Pesquisar - find(), refresh()
+Atualizar - merge()
+
+Estados da entidade -
+Gerenciado - contexto de persistência do entity manager, pode ir pro banco
+Não gerenciado - não está no contexto e não vai pro banco
+	new - sem PK
+	detached - com PK válido no banco
+
+
+
+
+
+
+
+
+
+
+
+

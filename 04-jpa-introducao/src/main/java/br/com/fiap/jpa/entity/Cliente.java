@@ -69,6 +69,18 @@ public class Cliente {
 		this.cpf = cpf;
 		this.telefone = telefone;
 	}
+	
+	public Cliente(Integer codigo, String nome, Calendar dataNascimento, 
+			Genero genero, byte[] foto, String cpf, String telefone) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.genero = genero;
+		this.foto = foto;
+		this.cpf = cpf;
+		this.telefone = telefone;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
