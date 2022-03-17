@@ -14,7 +14,7 @@ ds_tipo varchar(20)
 
 Sequence: SQ_TB_PRODUTO
 
-Exerc√≠cio
+ExercÌcio
 
 TB_CLIENTE
 -----
@@ -27,6 +27,11 @@ fl_foto blob
 nr_cpf varchar(15) not null
 nr_telefone varchar(12) 
 
-Atributo Integer idade, que n√£o ser√° uma coluna na tabela, s√≥ existe no Java
+Atributo Integer idade, que n„o ser· uma coluna na tabela, sÛ existe no Java
 
 Sequence: SQ_TB_CLIENTE
+
+
+Host: oracle.fiap.com.br
+Port: 1521
+SID: ORCL
