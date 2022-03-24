@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -80,6 +83,20 @@ public class Cliente {
 		this.foto = foto;
 		this.cpf = cpf;
 		this.telefone = telefone;
+	}
+	
+	//Método executado automáticamente 
+	@PrePersist //Antes de cadastrar
+	@PostPersist //Depois de cadastrar
+	public void executar() {
+		System.out.println("Cadastrando o cliente.." + nome);
+	}
+	
+	@PostLoad //Carregar a idade depois de carregar o objeto cliente
+	public void carregar() {
+		//carregar o atributo idade
+		idade = 10; //calcular a data de nascimento
+		System.out.println("Carregando o objeto cliente..");
 	}
 
 	public Integer getCodigo() {

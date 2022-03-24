@@ -6,35 +6,30 @@ import javax.persistence.Persistence;
 
 import br.com.fiap.jpa.entity.Cliente;
 
-public class ExemploRefresh {
-	
+public class ExemploRemocao {
+
 	public static void main(String[] args) {
-		//Obter a fabrica
+		//Obter a fabrica de entity manager
 		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("oracle");
 		
 		//Obter o entity manager
 		EntityManager em = fabrica.createEntityManager();
-
-		//Pesquisar o cliente pelo código
-		Cliente cliente = em.find(Cliente.class, 4);
 		
-		//Exibir o nome do cliente
-		System.out.println(cliente.getNome());
+		//Procurar o cliente
+		Cliente cliente = em.find(Cliente.class, 3);
 		
-		//Alterar o nome do cliente no objeto
-		cliente.setNome("Gabriela");
+		//Chamar o método remove
+		em.remove(cliente);
 		
-		//Exibir o nome do cliente
-		System.out.println(cliente.getNome());
+		//Commit
+		em.getTransaction().begin();
+		em.getTransaction().commit();
 		
-		//Chamar o método refresh
-		em.refresh(cliente);
-		
-		//Exibir o nome do cliente
 		System.out.println(cliente.getNome());
 		
 		//Fechar
 		em.close();
 		fabrica.close();
+		
 	}
 }

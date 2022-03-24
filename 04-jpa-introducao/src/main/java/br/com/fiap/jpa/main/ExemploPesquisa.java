@@ -16,7 +16,7 @@ public class ExemploPesquisa {
 		EntityManager em = fabrica.createEntityManager();
 		
 		//Pesquisar o cliente por código
-		Cliente cliente = em.find(Cliente.class, 1); //Classe, PK
+		Cliente cliente = em.find(Cliente.class, 4); //Classe, PK
 		
 		//Exibir o nome do cliente
 		System.out.println(cliente.getNome());
