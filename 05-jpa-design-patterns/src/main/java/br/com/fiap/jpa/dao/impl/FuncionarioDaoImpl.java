@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import br.com.fiap.jpa.dao.FuncionarioDao;
 import br.com.fiap.jpa.entity.Funcionario;
 import br.com.fiap.jpa.exception.CommitException;
+import br.com.fiap.jpa.exception.IdNotFoundException;
 
 public class FuncionarioDaoImpl implements FuncionarioDao {
 
@@ -22,15 +23,17 @@ public class FuncionarioDaoImpl implements FuncionarioDao {
 		em.merge(funcionario);
 	}
 
-	public void remover(Integer id) {
+	public void remover(Integer id) throws IdNotFoundException {
 		Funcionario funcionario = pesquisar(id);
 		em.remove(funcionario);
 	}
 
-	public Funcionario pesquisar(Integer id) {
+	public Funcionario pesquisar(Integer id) throws IdNotFoundException {
+		Funcionario f = em.find(Funcionario.class, id);
 		//validar se o funcionario existe, se não lançar uma exception
-		
-		return em.find(Funcionario.class, id);
+		if (f == null)
+			throw new IdNotFoundException();
+		return f;
 	}
 
 	public void commit() throws CommitException {

@@ -2,6 +2,7 @@ package br.com.fiap.jpa.dao;
 
 import br.com.fiap.jpa.entity.Funcionario;
 import br.com.fiap.jpa.exception.CommitException;
+import br.com.fiap.jpa.exception.IdNotFoundException;
 
 public interface FuncionarioDao {
 
@@ -9,9 +10,9 @@ public interface FuncionarioDao {
 	
 	void atualizar(Funcionario funcionario);
 	
-	void remover(Integer id);
+	void remover(Integer id) throws IdNotFoundException;
 	
-	Funcionario pesquisar(Integer id);
+	Funcionario pesquisar(Integer id) throws IdNotFoundException;
 	
 	void commit() throws CommitException;
 	
