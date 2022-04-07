@@ -4,7 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import br.com.fiap.jpa.dao.DepartamentoDao;
+import br.com.fiap.jpa.dao.GenericDao;
 import br.com.fiap.jpa.dao.impl.DepartamentoDaoImpl;
+import br.com.fiap.jpa.dao.impl.GenericDaoImpl;
 import br.com.fiap.jpa.entity.Departamento;
 import br.com.fiap.jpa.exception.CommitException;
 import br.com.fiap.jpa.exception.IdNotFoundException;
@@ -20,8 +22,14 @@ public class Exemplo {
 		//Obter um entity manager
 		EntityManager em = fabrica.createEntityManager();
 		
+		//Opção 1
 		//Instanciar um DepartamentoDaoImpl
-		DepartamentoDao dao = new DepartamentoDaoImpl(em);
+		//DepartamentoDao dao = new DepartamentoDaoImpl(em);
+		
+		//Opção 2
+		GenericDao<Departamento, Integer> dao = 
+				//Criando uma classe anônima e instanciando
+				new GenericDaoImpl<Departamento, Integer>(em) {};
 		
 		//Instanciar um Departamento
 		Departamento dep = new Departamento("TI"); //Criar os construtores!
