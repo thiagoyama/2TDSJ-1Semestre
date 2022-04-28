@@ -7,7 +7,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,6 +22,11 @@ public class Jogador {
 	@Column(name="cd_jogador")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jogador")
 	private Integer codigo;
+	
+	//N:1
+	@ManyToOne
+	@JoinColumn(name="cd_time", nullable = false)
+	private Time time;
 	
 	@Column(name="nm_jogador",nullable = false, length = 80)
 	private String nome;
@@ -34,6 +41,14 @@ public class Jogador {
 	@Lob
 	@Column(name="fl_foto")
 	private byte[] foto;
+	
+	public Jogador() {}
+	
+	public Jogador(String nome, Posicao posicao, Integer numero) {
+		this.nome = nome;
+		this.posicao = posicao;
+		this.numero = numero;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
@@ -73,6 +88,14 @@ public class Jogador {
 
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
 	}
 	
 }

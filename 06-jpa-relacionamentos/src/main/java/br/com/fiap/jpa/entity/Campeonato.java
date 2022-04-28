@@ -1,6 +1,7 @@
 package br.com.fiap.jpa.entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -22,6 +24,10 @@ public class Campeonato {
 	@GeneratedValue(generator = "campeonato", strategy = GenerationType.SEQUENCE)
 	private Integer codigo;
 	
+	//Relacionamento N:M bidirecional
+	@ManyToMany(mappedBy = "campeonatos")
+	private List<Time> times;
+	
 	@Column(name="nm_campeonato", nullable = false, length = 50)
 	private String nome;
 	
@@ -34,6 +40,16 @@ public class Campeonato {
 	
 	@Column(name="nr_ano")
 	private Integer ano;
+	
+	public Campeonato() {}
+
+	public Campeonato(String nome, BigDecimal premiacao, TipoCampeonato tipo, Integer ano) {
+		super();
+		this.nome = nome;
+		this.premiacao = premiacao;
+		this.tipo = tipo;
+		this.ano = ano;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
@@ -73,6 +89,14 @@ public class Campeonato {
 
 	public void setAno(Integer ano) {
 		this.ano = ano;
+	}
+
+	public List<Time> getTimes() {
+		return times;
+	}
+
+	public void setTimes(List<Time> times) {
+		this.times = times;
 	}
 	
 }
