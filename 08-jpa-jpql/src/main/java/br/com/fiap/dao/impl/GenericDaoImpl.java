@@ -1,8 +1,10 @@
 package br.com.fiap.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import br.com.fiap.dao.GenericDao;
 import br.com.fiap.exception.CommitException;
@@ -50,6 +52,18 @@ public abstract class GenericDaoImpl<T,K> implements GenericDao<T, K> {
 				em.getTransaction().rollback();
 			throw new CommitException("Erro no commit", e);
 		}
+	}
+
+	public List<T> listar() {
+		TypedQuery<T> query = em.createQuery("from " + clazz.getName(), clazz);
+		return query.getResultList();
+	}
+
+	public List<T> listar(Integer primeiraPosicao, Integer maximoResultados) {
+		return em.createQuery("from " + clazz.getName(), clazz)
+				.setMaxResults(maximoResultados)
+				.setFirstResult(primeiraPosicao)
+				.getResultList();
 	}
 
 }
