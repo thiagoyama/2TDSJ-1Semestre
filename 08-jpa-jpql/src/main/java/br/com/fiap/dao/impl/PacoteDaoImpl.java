@@ -46,4 +46,18 @@ public class PacoteDaoImpl extends GenericDaoImpl<Pacote,Integer> implements Pac
 				.getResultList();
 	}
 
+	public double somarPrecosPorTransporte(Transporte transporte) {		
+		return em.createQuery("select sum(p.preco) from Pacote p where p.transporte = :t", Double.class)
+				.setParameter("t", transporte)
+				.getSingleResult();
+	}
+
+	//Pesquisar com a query nativa do oracle
+	@SuppressWarnings("unchecked")
+	public List<Pacote> buscarPorPrecoMenor(Float preco) {
+		return em.createNativeQuery("select * from tb_ead_pacote where vl_pacote <= :p", Pacote.class)
+				.setParameter("p", preco)
+				.getResultList();
+	}
+
 }

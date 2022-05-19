@@ -1,5 +1,6 @@
 package br.fiap.com.main;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -91,6 +92,20 @@ public class Pesquisas {
 		clientes = clienteDao.buscar("a", "Londrina");
 		for (Cliente c : clientes) {
 			System.out.println(c.getNome() + " " + c.getEndereco().getCidade().getNome());
+		}
+		
+		//Criar uma lista de strings
+		List<String> estados = new ArrayList<String>();
+		//Adicionar os estados (siglas) na lista
+		estados.add("SP");
+		estados.add("PR");
+		
+		//Pesquisar os clientes por estados
+		clientes = clienteDao.buscarPorEstados(estados);
+		
+		//Exibir o nome dos clientes e o estado
+		for (Cliente c : clientes) {
+			System.out.println(c.getNome() + " " + c.getEndereco().getCidade().getUf());
 		}
 		
 	}//main

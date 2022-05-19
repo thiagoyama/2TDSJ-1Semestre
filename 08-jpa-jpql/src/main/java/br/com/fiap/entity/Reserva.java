@@ -10,8 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+@NamedQuery(name="Reserva.porClienteCpf", 
+	query="select r from Reserva r where r.cliente.cpf = :D")
 
 @Entity
 @Table(name="TB_EAD_RESERVA")
