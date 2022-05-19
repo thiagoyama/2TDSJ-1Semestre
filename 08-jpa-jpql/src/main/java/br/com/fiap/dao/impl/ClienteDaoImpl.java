@@ -32,4 +32,12 @@ public class ClienteDaoImpl extends GenericDaoImpl<Cliente,Integer> implements C
 				.getResultList();
 	}
 
+	public List<Cliente> buscar(String nome, String cidade) {
+		return em.createQuery("from Cliente c where c.nome like :n and "
+				+ "c.endereco.cidade.nome like :c", Cliente.class)
+				.setParameter("n", "%" + nome + "%")
+				.setParameter("c", "%" + cidade + "%")
+				.getResultList();
+	}
+
 }

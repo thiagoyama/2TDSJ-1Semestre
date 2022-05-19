@@ -87,6 +87,11 @@ public class Pesquisas {
 			System.out.println(p.getDescricao());
 		}
 		
+		//Pesquisar os clientes por parte do nome e parte do nome da cidade
+		clientes = clienteDao.buscar("a", "Londrina");
+		for (Cliente c : clientes) {
+			System.out.println(c.getNome() + " " + c.getEndereco().getCidade().getNome());
+		}
 		
 	}//main
 }//class
